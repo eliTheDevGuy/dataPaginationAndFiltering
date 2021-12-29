@@ -32,6 +32,12 @@ function showPage ( list , page ) {
       const img = document.createElement('IMG');
       img.className = 'avatar';
       img.src = `${data[i].picture.medium}`;
+      img.alt = `Profile Picture`;
+      studentDiv.appendChild(img);
+      const h3 = document.createElement('H3');
+      studentDiv.appendChild(h3);
+      const span = document.createElement('SPAN');
+      span.className = 'email';
         /* <li class="student-item cf">
             <div class="student-details">
                <img class="avatar" src="https://randomuser.me/api/portraits/women/25.jpg" alt="Profile Picture">
