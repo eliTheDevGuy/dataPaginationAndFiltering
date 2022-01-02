@@ -22,7 +22,7 @@ function showPage ( list , page ) {
    const endIndex = page * itemsPerPage;
    const ul = document.querySelector('.student-list');
    ul.innerHTML = `` ;
-   for ( i = 0 ; i >= startIndex && i < endIndex ; i++ ) {
+   for ( i = startIndex ; i >= startIndex && i < endIndex ; i++ ) {
       const li = document.createElement('LI');
       li.className = 'student-item cf';
       ul.appendChild(li);
@@ -97,9 +97,9 @@ function addPagination (list) {
       }
       event.target.className = 'active';
       let activeButton = document.querySelector('.active');
-      let x = activeButton.textContent;
-      let w = parseInt(x);
-      showPage(data,w);
+      let buttonContent = activeButton.textContent;
+      let buttonNum = parseInt(buttonContent);
+      showPage(data,buttonNum);
    });
 }
 
