@@ -11,7 +11,7 @@ For assistance:
    Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
 */
 
-const itemsPerPage = 10 ;
+const itemsPerPage = 9 ;
 
 /*
 Create the `showPage` function
@@ -75,7 +75,35 @@ Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
 
+function addPagination (list) {
+   const numberOfPages = list.length / 9;
+   const linkul = document.querySelector('.link-list');
+   linkul.innerHTML = '';
+   for ( i = 1 ; i <= numberOfPages ; i++ ) {
+      const pageLi = document.createElement('LI');
+      const pageBtn = document.createElement('BUTTON');
+      pageBtn.type = 'button';
+      pageBtn.textContent = `${i}`;
+      if ( i === 1 ) {
+         pageBtn.className = 'active';
+      }
+      pageLi.appendChild(pageBtn);
+      linkul.insertAdjacentElement( "beforeend" , pageLi );
+   } 
+   const liList = document.querySelectorAll('BUTTON');
+   linkul.addEventListener( 'click' , () => {
+      for ( i = 0 ; i < liList.length ; i++ ) {
+         liList[i].className = '';
+      }
+      event.target.className = 'active';
+      let activeButton = document.querySelector('.active');
+      let x = activeButton.textContent;
+      let w = parseInt(x);
+      showPage(data,w);
+   });
+}
 
 
 // Call functions
-showPage (data,all);
+showPage (data,1);
+addPagination (data);
