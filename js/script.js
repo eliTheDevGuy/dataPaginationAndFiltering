@@ -105,5 +105,34 @@ function addPagination (list) {
 
 
 // Call functions
+
 showPage (data,1);
 addPagination (data);
+
+
+//Creates search bar HTML structure
+
+const header = document.querySelector('.header');
+const searchLabel = document.createElement('LABEL');
+searchLabel.for = 'search';
+searchLabel.className = 'student-search';
+header.insertAdjacentElement("beforeend",searchLabel)
+const searchSpan = document.createElement('SPAN');
+searchSpan.textContent = 'Search by name';
+searchLabel.appendChild(searchSpan);
+const searchInput = document.createElement('INPUT');
+searchInput.id = 'search';
+searchInput.placeholder = 'Search by name...';
+searchLabel.appendChild(searchInput);
+const searchButton = document.createElement('BUTTON');
+searchButton.type = 'button';
+const searchImg = document.createElement('IMG');
+searchImg.src = 'img/icn-search.svg';
+searchImg.alt = 'Search icon';
+searchButton.appendChild(searchImg);
+searchLabel.appendChild(searchButton);
+/* <label for="search" class="student-search">
+      <span>Search by name</span>
+      <input id="search" placeholder="Search by name...">
+      <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+   </label> */
