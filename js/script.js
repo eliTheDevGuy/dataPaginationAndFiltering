@@ -78,8 +78,7 @@ This function will create and insert/append the elements needed for the paginati
 */
 
 function addPagination (list) {
-   let numberOfPages = (list.length / 9) + 1;
-   numberOfPages = Math.ceil(numberOfPages);
+   let numberOfPages = (list.length / 9)+1;
    const linkul = document.querySelector('.link-list');
    linkul.innerHTML = '';
    for ( i = 1 ; i < numberOfPages ; i++ ) {
@@ -118,7 +117,7 @@ addPagination (data);
 /* <label for="search" class="student-search">
       <span>Search by name</span>
       <input id="search" placeholder="Search by name...">
-      <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+      <button class="submit" type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
    </label> */
 
 const header = document.querySelector('.header');
@@ -140,6 +139,42 @@ searchImg.src = 'img/icn-search.svg';
 searchImg.alt = 'Search icon';
 searchButton.appendChild(searchImg);
 searchLabel.appendChild(searchButton);
+searchButton.className = 'submit';
 
 //Search bar functionality function
+const li = document.getElementsByTagName('LI');
+const ul = document.getElementsByClassName('.student-list');
+const searchIpt = document.querySelector('#search');
+const searchBar = document.querySelector('.submit');
+let newList;
+function search(userInput,list) {
+   for ( i = 0 ; i < list.length; i++ ) { 
+      li[i].id = '';
+      newList = [];       
+      let wholeName = list[i].name.title;
+      wholeName += list[i].name.first;
+      wholeName += list[i].name.last;
+         if (wholeName.toLowerCase().includes(userInput.value.toLowerCase()) === true ) {
+            li[i].id = 'match';
+            li[i].style.display = '';
+            newList += list[i];
+         } else {
+            li[i].id = '';
+            li[i].style.display = 'none';
+         }
+   } 
+   showPage (newList,1);
+   addPagination (newList);
+}
 
+
+searchIpt.addEventListener('keyup', (event) => {
+   event.preventDefault();
+   search(searchIpt , data );
+   console.log(newList);
+})
+
+searchBar.addEventListener('click', (event) => {
+   event.preventDefault();
+
+})
