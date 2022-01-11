@@ -142,26 +142,22 @@ searchLabel.appendChild(searchButton);
 searchButton.className = 'submit';
 
 //Search bar functionality function
-const li = document.getElementsByTagName('LI');
-const ul = document.getElementsByClassName('.student-list');
+const li = document.getElementsByClassName('student-item cf');
+const ul = document.getElementsByClassName('student-list');
 const searchIpt = document.querySelector('#search');
 const searchBar = document.querySelector('.submit');
-let newList;
+let newList = [];
 function search(userInput,list) {
-   for ( i = 0 ; i < list.length; i++ ) { 
-      li[i].id = '';
-      newList = [];       
+   newList = [];
+   for ( i = 0 ; i < list.length; i++ ) {  
       let wholeName = list[i].name.title;
       wholeName += list[i].name.first;
       wholeName += list[i].name.last;
          if (wholeName.toLowerCase().includes(userInput.value.toLowerCase()) === true ) {
-            li[i].id = 'match';
-            li[i].style.display = '';
             newList += list[i];
-         } else {
-            li[i].id = '';
-            li[i].style.display = 'none';
+            console.log(newList);
          }
+
    } 
    showPage (newList,1);
    addPagination (newList);
@@ -170,11 +166,10 @@ function search(userInput,list) {
 
 searchIpt.addEventListener('keyup', (event) => {
    event.preventDefault();
-   search(searchIpt , data );
-   console.log(newList);
+   search( searchIpt , data );
 })
 
 searchBar.addEventListener('click', (event) => {
    event.preventDefault();
-
+   search( searchIpt , data )
 })
