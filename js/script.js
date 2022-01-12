@@ -112,13 +112,13 @@ showPage (data,1);
 addPagination (data);
 
 
-//Creates search bar HTML structure
+/*Ignore! Creates search bar HTML structure
 
-/* <label for="search" class="student-search">
+ <label for="search" class="student-search">
       <span>Search by name</span>
       <input id="search" placeholder="Search by name...">
       <button class="submit" type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
-   </label> */
+   </label> 
 
 const header = document.querySelector('.header');
 const searchLabel = document.createElement('LABEL');
@@ -140,8 +140,8 @@ searchImg.alt = 'Search icon';
 searchButton.appendChild(searchImg);
 searchLabel.appendChild(searchButton);
 searchButton.className = 'submit';
-
-//Search bar functionality function
+/*
+/*Ignore! Working on Search bar functionality function on the side 
 const li = document.getElementsByClassName('student-item cf');
 const ul = document.getElementsByClassName('student-list');
 const searchIpt = document.querySelector('#search');
@@ -155,7 +155,11 @@ function search(userInput,list) {
       wholeName += list[i].name.last;
          if (wholeName.toLowerCase().includes(userInput.value.toLowerCase()) === true ) {
             newList += list[i];
-            console.log(newList);
+            for (i=0;i<newList.length;i++) 
+            {
+               let ty = newList[i];
+            console.log(ty);
+            }
          }
 
    } 
@@ -173,3 +177,4 @@ searchBar.addEventListener('click', (event) => {
    event.preventDefault();
    search( searchIpt , data )
 })
+*/
